@@ -1,0 +1,11 @@
+<div class="insta-post-wrapper">
+  <div class="insta-post-box">
+    <ng-container *ngIf="isVideo(imageUrl); else showImage">
+      <video class="post-media" [src]="imageUrl" controls autoplay muted></video>
+    </ng-container>
+
+    <ng-template #showImage>
+      <img class="post-media" [src]="imageUrl" alt="Post Media" />
+    </ng-template>
+  </div>
+</div>

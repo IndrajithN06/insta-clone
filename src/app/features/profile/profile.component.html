@@ -1,0 +1,61 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <!-- Profile picture -->
+    <img [src]="user?.profilePictureUrl ?? defaultProfilePic" alt="Profile" class="profile-pic" />
+    
+    <div class="profile-info">
+      <h2>{{ user?.username }}</h2>
+      <p>{{ user?.email }}</p>
+
+      <!-- 🔥 New Stats Section -->
+      <div class="profile-stats">
+        <div class="stat">
+          <strong>{{ stats.postsCount }}</strong>
+          <div>Posts</div>
+        </div>
+        <div class="stat">
+          <strong>{{ stats.followersCount }}</strong>
+          <div>Followers</div>
+        </div>
+        <div class="stat">
+          <strong>{{ stats.followingCount }}</strong>
+          <div>Following</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit button -->
+    <button class="edit-btn" (click)="isEditing = !isEditing">
+      {{ isEditing ? 'Cancel' : 'Edit Profile' }}
+    </button>
+  </div>
+
+  <!-- Bio when not editing -->
+  <div class="profile-details" *ngIf="!isEditing">
+    <p><strong>Bio:</strong> {{ user?.bio || 'No bio added yet' }}</p>
+  </div>
+
+  <!-- Edit form -->
+  <div class="profile-edit" *ngIf="isEditing">
+    <form (ngSubmit)="updateProfile()">
+      <!-- Bio input -->
+      <label>
+        Bio:
+        <textarea [(ngModel)]="updateData.bio" name="bio"></textarea>
+      </label>
+
+      <!-- Profile picture input -->
+      <label>
+        Profile Picture:
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+        <div *ngIf="previewUrl">
+          <p><strong>Preview:</strong></p>
+          <img [src]="previewUrl" alt="Profile Picture Preview" class="profile-pic-preview" />
+        </div>
+      </label>
+
+      <!-- Save button -->
+      <button type="submit" class="save-btn">Save</button>
+    </form>
+  </div>
+</div>

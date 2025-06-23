@@ -1,0 +1,5 @@
+<div class="post-comments">
+  <div *ngFor="let comment of comments" class="comment">
+    <strong>{{ comment.user.username }}</strong>: {{ comment.content }}
+  </div>
+</div>

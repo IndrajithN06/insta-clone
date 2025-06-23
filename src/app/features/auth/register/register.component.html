@@ -1,0 +1,61 @@
+<div class="auth-container">
+  <div class="form-box">
+    <h1 class="logo">Register into Instagram</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()" autocomplete="off">
+      <!-- Dummy inputs to prevent autofill -->
+      <input type="text" style="display:none" name="dummy" />
+      <input type="password" style="display:none" name="dummy-password" />
+
+      <!-- Username Field with validation -->
+      <input
+        type="text"
+        formControlName="username"
+        name="random-username" 
+        placeholder="Username"
+        class="input-field"
+        autocomplete="off"
+      />
+      <div *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched" class="error-message">
+        Username is required and must be at least 3 characters.
+      </div>
+
+      <!-- Password Field with validation -->
+      <input
+        type="password"
+        formControlName="password"
+        name="random-password"  
+        placeholder="Password"
+        class="input-field"
+        autocomplete="new-password"  
+      />
+      <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="error-message">
+        Password is required and must be at least 6 characters.
+      </div>
+
+      <!-- Email Field with validation -->
+      <input
+        type="email"
+        formControlName="email"
+        name="random-email" 
+        placeholder="Email"
+        class="input-field"
+        autocomplete="off"
+      />
+      <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="error-message">
+        Please enter a valid email address.
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn" [disabled]="registerForm.invalid || isLoading">
+        <mat-spinner *ngIf="isLoading" diameter="20" color="accent" strokeWidth="3"></mat-spinner>
+        <span *ngIf="!isLoading">Register</span>
+      </button>
+      
+    </form>
+
+    <p class="login-link">
+      Already have an account? <a routerLink="/login">Login</a>
+    </p>
+  </div>
+</div>

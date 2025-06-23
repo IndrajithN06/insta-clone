@@ -1,0 +1,50 @@
+<div class="auth-container">
+  <div class="form-box">
+    <h1 class="logo">Login into Instagram</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" autocomplete="off">
+      <!-- Dummy inputs to prevent autofill -->
+      <input type="text" style="display:none" name="dummy" />
+      <input type="password" style="display:none" name="dummy-password" />
+
+      <!-- Username Field with validation -->
+      <input
+        type="text"
+        formControlName="username"
+        name="random-username"  
+        placeholder="Username"
+        class="input-field"
+        autocomplete="off"
+      />
+      <div *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched" class="error-message">
+        Username is required and must be at least 3 characters.
+      </div>
+
+      <!-- Password Field with validation -->
+      <input
+        type="password"
+        formControlName="password"
+        name="random-password"  
+        placeholder="Password"
+        class="input-field"
+        autocomplete="new-password" 
+      />
+      
+      <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="error-message">
+        Password is required and must be at least 6 characters.
+      </div>
+      
+      <!-- 🔗 Forgot Password Link -->
+      <p class="forgot-password">
+      <a routerLink="/forgot-password">Forgot Password?</a>
+      </p>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">Login</button>
+    </form>
+
+    <p class="signup-link">
+      Don't have an account? <a routerLink="/register">Register</a>
+    </p>
+  </div>
+</div>

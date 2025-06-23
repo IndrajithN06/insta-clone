@@ -1,0 +1,29 @@
+.app-container {
+    display: flex;
+    height: 100vh; /* Full height of viewport */
+    overflow: hidden;
+  }
+  
+  app-sidebar {
+    width: 250px;
+    background-color: #000;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* Full height */
+    padding: 1rem;
+    box-sizing: border-box;
+    z-index: 10;
+  }
+  
+.main-content {
+  margin-left: 250px; /* Same as sidebar width */
+  overflow-y: auto;
+  height: 100vh;
+  width: calc(100% - 250px); /* Prevent horizontal overflow */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+  

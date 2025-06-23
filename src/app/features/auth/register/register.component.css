@@ -1,0 +1,85 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000; /* Dark background */
+    color: #fff; /* White text */
+  }
+  
+  .form-box {
+    background-color: #121212; /* Slightly lighter than black */
+    padding: 40px 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    text-align: center;
+   
+  }
+  
+  .logo {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #fff;
+  }
+  
+  .input-field {
+    width: 95%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #262626;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .input-field::placeholder {
+    color: #999;
+  }
+  
+  .error-message {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: -12px;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #3897f0; /* Instagram blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #2f82d8;
+  }
+  
+  .submit-btn:disabled {
+    background-color: #4e8dc4;
+    cursor: not-allowed;
+  }
+  
+  .login-link {
+    color: #999;
+    font-size: 17px;
+    margin-top: 20px;
+  }
+  
+  .login-link a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  

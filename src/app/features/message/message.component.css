@@ -1,0 +1,12 @@
+.messages-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; /* prevents body scroll */
+}
+
+.chat-panel {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

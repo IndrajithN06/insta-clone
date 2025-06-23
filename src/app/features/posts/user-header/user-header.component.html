@@ -1,0 +1,7 @@
+<div class="user-header">
+  <img [src]="user.profilePictureUrl" alt="Profile" class="avatar" />
+  <div>
+    <strong style="color: beige;">{{ user.username }}</strong>
+    <div class="time">{{ createdAt | date: 'short' }}</div>
+  </div>
+</div>

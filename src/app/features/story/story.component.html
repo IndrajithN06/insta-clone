@@ -1,0 +1,19 @@
+<div class="story" (click)="storyUrl ? openStory(storyUrl) : null">
+
+  <!-- Show upload option if it's the current user and no story uploaded -->
+  <ng-container *ngIf="isCurrentUser && !storyUrl; else storyExists">
+    <div class="upload-avatar-wrapper" (click)="fileInput.click(); $event.stopPropagation()">
+      <img [src]="profilePictureUrl || 'assets/default-avatar.png'" alt="Story" class="story-avatar" />
+      <span class="plus-icon">+</span>
+    </div>
+    <input type="file" #fileInput accept="video/*" (change)="onFileSelected($event)"  />
+    <p class="story-username">Your Story</p>
+  </ng-container>
+
+  <!-- Show story if it exists -->
+  <ng-template #storyExists>
+    <img [src]="profilePictureUrl" alt="Story" class="story-avatar" />
+    <p class="story-username">{{ isCurrentUser ? 'Your Story' : username }}</p>
+  </ng-template>
+
+</div>

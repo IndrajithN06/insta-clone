@@ -1,0 +1,18 @@
+<div class="chat-window">
+  <div class="chat-history">
+    <div *ngFor="let msg of conversation">
+      <div [ngClass]="{
+        'msg': true,
+        'sent': msg.senderId === loggedInUserId,
+        'received': msg.senderId !== loggedInUserId
+      }">
+        {{ msg.text }}
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input [(ngModel)]="newMessageText" placeholder="Type a message..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>

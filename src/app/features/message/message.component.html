@@ -1,0 +1,15 @@
+<div class="messages-container">
+  <app-sidebar 
+    [username]="username" 
+    [messages]="messages"
+    (chatSelected)="selectedUser = $event"
+  ></app-sidebar>
+
+  <div class="chat-panel">
+    <app-chat-window 
+      *ngIf="selectedUser"
+      [user]="selectedUser"
+      [loggedInUserId]="loggedInUserId"
+    ></app-chat-window>
+  </div>
+</div>

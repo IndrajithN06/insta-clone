@@ -1,0 +1,21 @@
+<h2>{{ username }}</h2>
+
+<input type="text" class="search-input" placeholder="Search" />
+
+<div class="messages-header">
+  <span class="messages-title">Messages</span>
+  <span class="requests-link">Requests</span>
+</div>
+
+<div 
+  *ngFor="let msg of messages" 
+  class="message-item"
+  (click)="openChat(msg)"
+>
+  <div class="message-avatar">
+    <img [src]="msg.profilePictureUrl" alt="Profile Pic" />
+  </div>
+  <div class="message-content">
+    <div class="message-sender">{{ msg.username }}</div>
+  </div>
+</div>

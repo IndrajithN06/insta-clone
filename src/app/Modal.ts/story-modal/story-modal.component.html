@@ -1,0 +1,19 @@
+<div class="story-modal">
+  <div class="story-header">
+    <div class="user-info">
+      <img class="avatar" src="https://ilarge.lisimg.com/image/16670334/1118full-roman-reigns.jpg" alt="User" />
+      <span class="username">Roman</span>
+    </div>
+    <button class="close-btn" (click)="close()">×</button>
+  </div>
+
+  <div class="story-content">
+    <video
+      class="story-video"
+      [src]="data.storyUrl"
+      autoplay
+      muted
+      controls
+    ></video>
+  </div>
+</div>

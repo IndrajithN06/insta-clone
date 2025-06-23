@@ -1,0 +1,77 @@
+.story-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #000;
+  z-index: 1000;
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+}
+
+.story-list {
+  display: flex;
+  overflow-x: auto;
+  padding: 0 16px;
+  gap: 14px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.story-list::-webkit-scrollbar {
+  height: 6px;
+}
+.story-list::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 3px;
+}
+
+/* Optional: horizontal fading effect (nice touch) */
+.story-list::before,
+.story-list::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  pointer-events: none;
+}
+.story-list::before {
+  left: 0;
+  background: linear-gradient(to right, #000, transparent);
+}
+.story-list::after {
+  right: 0;
+  background: linear-gradient(to left, #000, transparent);
+}
+
+app-story {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+app-story:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+app-story img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #c13584;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+.scrollable-content {
+  margin-top: 110px;
+  padding: 20px;
+  background-color: #111;
+  min-height: 100vh;
+  width: 70%;
+}

@@ -1,0 +1,65 @@
+<div class="sidebar">
+    <div class="logo">Instagram</div>
+  
+    <nav class="menu">
+      <a href="#" class="menu-item active" routerLink="/home">
+        <i class="icon">🏠</i>
+        <span>Home</span>
+      </a>
+      <a href="#" class="menu-item" routerLink="/search">
+        <i class="icon">🔍</i>
+        <span>Search</span>
+      </a>
+      <a href="#" class="menu-item">
+        <i class="icon">🧭</i>
+        <span>Explore</span>
+      </a>
+      <a href="#" class="menu-item">
+        <i class="icon">🎬</i>
+        <span>Reels</span>
+      </a>
+      <a href="#" class="menu-item" routerLink="/messages">
+        <i class="icon">💬</i>
+        <span>Messages</span>
+        <span class="badge" *ngIf="notifications > 0">{{ notifications }}</span>
+      </a>
+      <a href="#" class="menu-item">
+        <i class="icon">🤍</i>
+        <span>Notifications</span>
+      </a>
+      <a href="#" class="menu-item">
+        <i class="icon">➕</i>
+        <span>Create</span>
+      </a>
+      <a routerLink="/profile" class="menu-item">
+        <img [src]="user.profilePictureUrl" alt="Profile" class="icon profile"  routerLink="/profile"/>
+
+        <span>Profile</span>
+      </a>
+
+  
+    
+<!-- More button -->
+<a  class="menu-item" (click)="toggleMoreMenu()" #moreButtonRef>
+    <i class="icon">☰</i>
+    <span>More</span>
+  </a>
+  
+</nav>
+  <!-- Popup menu -->
+  <div class="more-popup" *ngIf="isMoreMenuOpen"  #popupRef>
+    <ul>
+      <li (click)="navigate('settings')">Settings</li>
+      <li (click)="navigate('activity')">Your activity</li>
+      <li (click)="navigate('saved')">Saved</li>
+      <li (click)="toggleTheme()">Switch appearance</li>
+      <li (click)="navigate('report')">Report a problem</li>
+      <hr />
+      <li (click)="switchAccount()">Switch accounts</li>
+      <li (click)="logout()">Log out</li>
+    </ul>
+  </div>
+  
+  
+  </div>
+  

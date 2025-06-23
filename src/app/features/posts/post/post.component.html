@@ -1,0 +1,12 @@
+<!-- post.component.html -->
+<div class="post-card">
+  <app-user-header [user]="post.user" [createdAt]="post.createdAt"></app-user-header>
+
+  <app-post-media [imageUrl]="post.contentUrl"></app-post-media>
+
+  <app-post-actions [likes]="post.likes"></app-post-actions>
+
+  <app-post-tags [tags]="post.tags"></app-post-tags>
+
+  <app-post-comments [comments]="post.comments"></app-post-comments>
+</div>

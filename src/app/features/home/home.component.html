@@ -1,0 +1,29 @@
+<!-- home.component.html -->
+<div class="story-container">
+  <div class="story-list-wrapper">
+    <div class="story-list">
+      <!-- Logged-in user's story -->
+      <app-story
+        *ngIf="loggedInUserStory"
+        [profilePictureUrl]="loggedInUserStory.user?.profilePictureUrl"
+        [username]="loggedInUserStory.user?.username"
+        [storyUrl]="loggedInUserStory.contentUrl"
+        [isCurrentUser]="true"
+        (storyUploaded)="loadStories()">
+      </app-story>
+
+      <!-- Other user stories -->
+      <app-story
+        *ngFor="let story of otherUserStories"
+        [profilePictureUrl]="story.user?.profilePictureUrl"
+        [username]="story.user?.username"
+        [storyUrl]="story.contentUrl"
+        (storyUploaded)="loadStories()">
+      </app-story>
+    </div>
+  </div>
+</div>
+
+<div class="scrollable-content">
+  <app-post-list [posts]="posts"></app-post-list>
+</div>
