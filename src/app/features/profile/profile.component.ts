@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../Auth/auth.service';
 import { ProfileStatsDto } from '../../DTOs/profile-stats.dto';
-
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +18,7 @@ templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-   baseUrl:string = "https://localhost:7038";
+   baseUrl:string = environment.apiUrl;
   user: UserProfile | null = null;
   defaultProfilePic = 'assets/images/';
   updateData: UpdateProfileDto = {

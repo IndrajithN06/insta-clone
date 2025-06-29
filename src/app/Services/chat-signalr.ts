@@ -3,6 +3,7 @@ import * as signalR from '@microsoft/signalr';
 import { MessageDto } from '../DTOs/ConversationDto';
 import { BehaviorSubject } from 'rxjs';
 import { CreateMessageDto } from '../features/message/model/message.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class ChatSignalRService {
 
   startConnection(userId: number) {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl(`https://localhost:7038/chathub`, {
+      .withUrl(`${environment.apiUrl}/chathub`, {
         accessTokenFactory: () => localStorage.getItem('token') || '' // if you use JWT auth, return token here
       })
       .withAutomaticReconnect()

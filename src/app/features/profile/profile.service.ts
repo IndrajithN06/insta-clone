@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { UpdateProfileDto } from '../../DTOs/UpdateProfileDto';
 import { UserProfile } from '../../Models/user-profile';
 import { ProfileStatsDto } from '../../DTOs/profile-stats.dto';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProfileService {
-  private apiUrl = 'https://localhost:7038/api/user'; // Adjust the API URL as needed
+  private apiUrl = `${environment.apiUrl}/api/user`; // Adjust the API URL as needed
 
   constructor(private http: HttpClient) {}
 

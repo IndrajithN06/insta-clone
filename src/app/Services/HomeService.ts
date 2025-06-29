@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root',
 })
 export class HomeService {
-    private baseUrl: string = 'https://api.example.com'; // Replace with your API base URL
+    private baseUrl: string = environment.apiUrl; // Replace with your API base URL
 
     constructor(private http: HttpClient) {}
 

@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Story} from '../Models/story'; // Adjust the import path as necessary
-
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoryService {
-  private apiUrl = 'https://localhost:7038/api/Story';
+  private apiUrl = `${environment.apiUrl}/api/Story`;
 
   constructor(private http: HttpClient) {}
 

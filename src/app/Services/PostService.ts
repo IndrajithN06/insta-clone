@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PostDto} from '../DTOs/postDto'; // Adjust the import path as necessary
-
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private readonly apiUrl = 'https://localhost:7038/api/posts'; // Update with your actual backend URL
+  private readonly apiUrl = `${environment.apiUrl}/api/posts`; // Update with your actual backend URL
 
   constructor(private http: HttpClient) {}
 

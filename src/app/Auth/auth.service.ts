@@ -4,13 +4,14 @@ import { Observable } from 'rxjs'
 import { LoginDto } from '../DTOs/LoginDto';
 import { RegisterDto } from '../DTOs/RegisterDto';
 import {jwtDecode} from 'jwt-decode';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl='https://localhost:7038/api/Auth'
+  private apiUrl = `${environment.apiUrl}/api/Auth`
 
   constructor(private http:HttpClient) { }
 

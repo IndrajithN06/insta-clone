@@ -3,16 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ConversationDto, CreateMessageDto, MarkReadDto, MessageDto } from '../model/message.model';
-
-
-
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root' // standalone
 })
 export class MessageService {
   private http = inject(HttpClient);
-  private baseUrl = 'https://localhost:7038/api/messages';
+  private baseUrl = `${environment.apiUrl}/api/messages`;
 
   getConversations(userId: number|null): Observable<ConversationDto[]> {
     return this.http.get<ConversationDto[]>(`${this.baseUrl}/conversations/${userId}`);
@@ -31,15 +29,15 @@ export class MessageService {
   }
 
   getFollowedUsers(userId: number): Observable<any[]> {
-  return this.http.get<any[]>(`https://localhost:7038/api/users/${userId}/followed`);
+  return this.http.get<any[]>(`${environment.apiUrl}/api/users/${userId}/followed`);
 }
 
 GetFollowers(username: string): Observable<any[]> {
-  return this.http.get<any[]>(`https://localhost:7038/api/user/${username}/followers`);  
+  return this.http.get<any[]>(`${environment.apiUrl}/api/user/${username}/followers`);  
 }
 
 GetFollowing(username: string|null): Observable<any[]> {
-  return this.http.get<any[]>(`https://localhost:7038/api/user/${username}/following`);  
+  return this.http.get<any[]>(`${environment.apiUrl}/api/user/${username}/following`);  
 } 
 
 }
