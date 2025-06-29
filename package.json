@@ -23,6 +23,7 @@
     "@babel/traverse": "^7.27.4",
     "@microsoft/signalr": "^8.0.7",
     "bootstrap": "^5.3.6",
+    "emoji-button": "^2.2.2",
     "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

@@ -16,6 +16,15 @@
   padding: 15px;
   overflow-y: auto; /* Enables scrolling for chat messages */
   background-color: #f0f0f0;
+  
+  /* Hide scrollbar for Webkit browsers (Chrome, Safari, Edge) */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* Hide scrollbar for Webkit browsers */
+.chat-history::-webkit-scrollbar {
+  display: none;
 }
 
 /* Individual message styling */

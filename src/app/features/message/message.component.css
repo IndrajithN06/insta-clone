@@ -2,11 +2,27 @@
   display: flex;
   height: 100vh;
   overflow: hidden; /* prevents body scroll */
+  position: fixed;
+  top: 0;
+  left: 250px; /* Account for main sidebar width */
+  right: 0;
+  bottom: 0;
+  width: calc(100vw - 250px);
 }
 
 .chat-panel {
-  flex: 1;
+  position: absolute;
+  top: 0;
+  left: 320px; /* Start to the right of the message sidebar */
+  width: calc(100% - 320px);
+  height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+/* Ensure no overlap with main sidebar */
+:host {
+  margin-left: 0;
+  padding-left: 0;
 }

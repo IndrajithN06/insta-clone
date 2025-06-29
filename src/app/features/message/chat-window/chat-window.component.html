@@ -1,5 +1,5 @@
 <div class="chat-window">
-  <div class="chat-history">
+  <div class="chat-history" #chatHistory>
     <div *ngFor="let msg of conversation">
       <div [ngClass]="{
         'msg': true,
@@ -12,7 +12,10 @@
   </div>
 
   <div class="chat-input">
-    <input [(ngModel)]="newMessageText" placeholder="Type a message..." />
+    <input 
+      [(ngModel)]="newMessageText" 
+      placeholder="Type a message..." 
+      (keyup.enter)="sendMessage()" />
     <button (click)="sendMessage()">Send</button>
   </div>
 </div>

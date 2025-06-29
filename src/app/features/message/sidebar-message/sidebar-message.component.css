@@ -10,6 +10,12 @@
   height: 100vh;
   box-sizing: border-box;
   overflow-y: auto;
+  position: fixed;
+  left: 250px; /* Fix: Start to the right of the main sidebar */
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  width: 320px; /* Fixed width */
 }
 
 /* Username */

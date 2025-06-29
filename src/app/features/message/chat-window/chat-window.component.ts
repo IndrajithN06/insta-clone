@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MessageDto, CreateMessageDto } from '../model/message.model';
@@ -13,9 +13,11 @@ import { Subscription } from 'rxjs';
   templateUrl: './chat-window.component.html',
   styleUrls: ['./chat-window.component.css']
 })
-export class ChatWindowComponent implements OnChanges, OnDestroy {
+export class ChatWindowComponent implements OnChanges, OnDestroy, AfterViewInit {
   @Input() loggedInUserId!: number | null;
   @Input() user!: { id: number; username: string; profilePictureUrl: string };
+  @ViewChild('chatHistory', { static: false }) chatHistory!: ElementRef;
+  
   conversation: MessageDto[] = [];
   newMessageText = '';
   private messageSub!: Subscription;
@@ -25,6 +27,11 @@ export class ChatWindowComponent implements OnChanges, OnDestroy {
     private messageService: MessageService,
     private signalRService: ChatSignalRService
   ) {}
+
+  ngAfterViewInit(): void {
+    // Initial scroll to bottom when view is initialized
+    this.scrollToBottom();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['user'] && this.user && this.loggedInUserId) {
@@ -43,7 +50,7 @@ export class ChatWindowComponent implements OnChanges, OnDestroy {
 
           if (isChatWithCurrentUser) {
             this.conversation.push(message);
-            setTimeout(() => this.scrollToBottom(), 0);
+            this.scrollToBottom();
           }
         });
       }
@@ -55,26 +62,36 @@ export class ChatWindowComponent implements OnChanges, OnDestroy {
     if (this.messageSub) this.messageSub.unsubscribe();
   }
 
-sendMessage() {
-  const trimmed = this.newMessageText.trim();
-  if (!trimmed || !this.loggedInUserId || !this.user?.id) return;
+  sendMessage() {
+    const trimmed = this.newMessageText.trim();
+    if (!trimmed || !this.loggedInUserId || !this.user?.id) return;
 
-  const message: CreateMessageDto = {
-    senderId: this.loggedInUserId,
-    receiverId: this.user.id,
-    text: trimmed,
-  };
+    const message: CreateMessageDto = {
+      senderId: this.loggedInUserId,
+      receiverId: this.user.id,
+      text: trimmed,
+    };
 
-  this.signalRService.sendMessage(message);
-  this.newMessageText = '';
-}
-
+    this.signalRService.sendMessage(message);
+    this.newMessageText = '';
+    // Scroll to bottom after sending message
+    this.scrollToBottom();
+  }
 
   scrollToBottom() {
-    const container = document.querySelector('.chat-history');
-    if (container) {
-      container.scrollTop = container.scrollHeight;
-    }
+    // Use multiple approaches to ensure scrolling works
+    setTimeout(() => {
+      if (this.chatHistory && this.chatHistory.nativeElement) {
+        const element = this.chatHistory.nativeElement;
+        element.scrollTop = element.scrollHeight;
+      } else {
+        // Fallback to querySelector if ViewChild is not available
+        const container = document.querySelector('.chat-history');
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
+      }
+    }, 100); // Small delay to ensure DOM is updated
   }
 
   loadConversation() {
@@ -85,7 +102,8 @@ sendMessage() {
     );
 
     this.conversation = target?.messages || [];
-      setTimeout(() => this.scrollToBottom(), 0);
+      // Scroll to bottom after loading conversation
+      this.scrollToBottom();
     });
   }
 }
