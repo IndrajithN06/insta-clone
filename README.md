@@ -1,6 +1,34 @@
-# InstaClone
+# Instagram Clone
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.
+A modern Instagram clone built with Angular 19, featuring real-time messaging, stories, posts, and user profiles.
+
+## Features
+- 🔐 Authentication (Login/Register)
+- 📱 Responsive Design
+- 💬 Real-time Messaging with SignalR
+- 📖 Stories Feature
+- 📸 Post Management
+- 👤 User Profiles
+- 🔍 Search Functionality
+- 🎨 Modern UI/UX
+
+## Tech Stack
+- **Frontend**: Angular 19
+- **Backend**: .NET Core API
+- **Real-time**: SignalR
+- **Deployment**: GitHub Pages
+
+## Live Demo
+Visit: https://indrajithn06.github.io/insta-clone/
+
+## Development
+```bash
+npm install
+ng serve
+```
+
+## Deployment
+Automatically deployed via GitHub Actions on push to master branch.
 
 ## Development server
 
